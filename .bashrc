@@ -19,22 +19,28 @@ export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
 export ANDROID_HOME="$HOME/Android/Sdk"
 
 
+# export USER_ENV_PATH="/usr/lib/rustup/bin"
+# export USER_ENV_PATH="$USER_ENV_PATH:$HOME/.yarn/bin"
+export USER_ENV_PATH="$HOME/.yarn/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$HOME/.cargo/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$HOME/Development/flutter/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$HOME/.pub-cache/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$JAVA_HOME/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:/opt/gradle/gradle-8.6/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$HOME/.local/share/solana/install/active_release/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$ANDROID_HOME/cmdline-tools/bin"
+export USER_ENV_PATH="$USER_ENV_PATH:$ANDROID_HOME/emulator"
+export USER_ENV_PATH="$USER_ENV_PATH:$ANDROID_HOME/platform-tools"
 
-export PATH="$PATH:/usr/share/scripts"
-export PATH="$PATH:/usr/lib/rustup/bin"
-export PATH="$PATH:$HOME/.yarn/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/Development/flutter/bin"
-export PATH="$PATH:$HOME/.pub-cache/bin"
-export PATH="$PATH:$JAVA_HOME/bin"
-export PATH="$PATH:/opt/gradle/gradle-8.6/bin"
-export PATH="$PATH:$HOME/.local/share/solana/install/active_release/bin"
-export PATH=$ANDROID_HOME/cmdline-tools/bin:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
+if [[ "${PATH: -${#USER_ENV_PATH}}" != "$USER_ENV_PATH" ]]; then
+  export PATH="$PATH:$USER_ENV_PATH";
+fi
+
+
+
 
 alias init-nvm='source /usr/share/nvm/init-nvm.sh' # makes bash launch slow
-alias tmux-rs='tmux new -e CARGO_TARGET_DIR=/tmp/target -s '
+# alias tmux-rs='tmux new -e CARGO_TARGET_DIR=/tmp/target -s '
 
 # For Dart FFI GEN
 alias setcpath='export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d'"'"' '"'"' -f1 | rev)/include"'
@@ -67,8 +73,10 @@ todo() {
   fi
 }
 
+todos() {
+  [ -r .todo ] && echo 'TODOS:' && cat -n .todo 
+}
 
-[ -r .todo ] && echo 'TODOS:' && cat -n .todo && \
 
 todone() {
   todoline=$(sed -n "$1"p .todo)
@@ -89,6 +97,6 @@ todone() {
   fi
 }
 
+todos
 
-eval "$(starship init bash)"
-
+# eval "$(starship init bash)"

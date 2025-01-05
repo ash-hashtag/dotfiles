@@ -1,4 +1,4 @@
-cp -r ~/.tmux.conf ~/.config/helix ~/.config/alacritty ~/.bashrc ./
+cp -r ~/.tmux.conf ~/.config/helix ~/.config/alacritty ~/.config/wezterm/wezterm.lua ~/.bashrc ./
 git add .
 git commit -m "synced $(date)"
 git push -u origin main

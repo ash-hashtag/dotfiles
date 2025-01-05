@@ -2,3 +2,13 @@
 name = "typescript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
+
+
+[[language]]
+name = "mantis"
+file-types = ["ms"]
+scope = "main.ms"
+comment-tokens = "//"
+auto-format = false
+language-servers = []
+
