@@ -1,5 +1,5 @@
 
-![Screenshot](relative%20assets/screenshot.webp?raw=true)
+![Screenshot](./assets/screenshot.webp?raw=true)
 
 
 ```
