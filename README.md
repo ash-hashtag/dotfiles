@@ -1,5 +1,5 @@
 
-![Screenshot](https://github.com/ash-hashtag/dotfiles/assets/screenshot.webp?raw=true)
+![Screenshot](relative%20assets/screenshot.webp?raw=true)
 
 
 ```
